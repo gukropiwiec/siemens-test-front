@@ -1,17 +1,27 @@
 
-<button type="button" class="btn btn-primary mt-5 mb-4" (click)="openModal()">
-  Create Equipment
-</button>
+<div class="row">
+  <div class="col-12 col-md-4 col-lg-3">
+    <button type="button" class="btn btn-primary mt-5 mb-4" (click)="openModal()">
+      Create Equipment
+    </button>
+  </div>
+  <div class="col align-self-center">
+    <div class="form-floating mb-3 mt-3">
+      <input type="text" class="form-control" id="floatingInputSearchBySN" placeholder="Search by Serial Number" [(ngModel)]="searchString" (blur)="searchBySN()">
+      <label for="floatingInputSearchBySN">Search by Serial Number</label>
+    </div>
+  </div>
+</div>
 <div *ngIf="equipments.length > 0" class="table-responsive">
   <table class="table table-hover table-bordered caption-top">
       <caption>List of Equipments</caption>
       <thead>
         <tr>
-          <th scope="col">id</th>
+          <th scope="col">ID</th>
           <th scope="col">Name</th>
           <th scope="col">Serial Number</th>
-          <th scope="col">Points</th>
-          <th scope="col" style="width: 10%;"></th>
+          <th scope="col">Nº of Points</th>
+          <th scope="col" style="width: 10%;">Actions</th>
         </tr>
       </thead>
       <tbody>

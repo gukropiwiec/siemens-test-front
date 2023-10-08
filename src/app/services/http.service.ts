@@ -21,8 +21,8 @@ export class HttpService<T> {
     return this.httpClient.get<T[]>(url, this.httpOptions);
   }
 
-  getOne(endpoint: string, _id: string): Observable<T> {
-    const url = `${environment.apiUrl}/${endpoint}/${_id}`;
+  getOne(endpoint: string, serialNumber: string): Observable<T> {
+    const url = `${environment.apiUrl}/${endpoint}/${serialNumber}`;
     return this.httpClient.get<T>(url, this.httpOptions);
   }
 

@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class TableComponent implements OnInit {
     equipments: IEquipment[] = [];
+    searchString = '';
 
     constructor(
       private httpService: HttpService<IEquipment>,
@@ -48,5 +49,13 @@ export class TableComponent implements OnInit {
         await this.getEquipment();
         this.snackBar.open('Equipment deleted successfully!', 'OK');
       });
+    }
+
+    async searchBySN() {
+      if (this.searchString) {
+        const res = this.httpService.getOne('equipment', this.searchString);
+        const eq = await lastValueFrom(res);
+        eq ? this.openModal(eq) : this.snackBar.open('Equipment not found!', 'OK');
+      }
     }
 }
