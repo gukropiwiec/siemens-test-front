@@ -7,7 +7,6 @@ import { ModalEqComponent } from './modal-eq/modal-eq.component';
 const moduleComponents: (Type<any>)[] = [
     EquipmentComponent,
     TableComponent,
-    ModalEqComponent
 ];
 
 @NgModule({

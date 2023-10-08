@@ -1,17 +1,47 @@
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<h2 mat-dialog-title>{{ data.title }}</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="equipmentForm">
+    <div class="form-floating mb-3 mt-3">
+      <input type="text" class="form-control" id="floatingInputName" placeholder="Name" formControlName="name">
+      <label for="floatingInputName">Name</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInputSN" placeholder="Serial Number" formControlName="serialNumber">
+      <label for="floatingInputSN">Serial Number</label>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h2>Points</h2>
+      </div>
+    </div>
+    <div class="row" *ngFor="let point of points; let i = index;">
+      <div class="col-4">
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control" id="floatingInputNamePoint{{ i }}" placeholder="Name">
+          <label for="floatingInputNamePoint{{ i }}">Name</label>
         </div>
-        <div class="modal-body">
-          ...
+      </div>
+      <div class="col-4">
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control" id="floatingInputDataTypePoint{{ i }}" placeholder="Data Type">
+          <label for="floatingInputDataTypePoint{{ i }}">Data Type</label>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+      <div class="col-4">
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" class="form-control" id="floatingInputValuePoint{{ i }}" placeholder="Value">
+          <label for="floatingInputValuePoint{{ i }}">Value</label>
         </div>
       </div>
     </div>
-</div>
+    <div class="row">
+      <div class="col-12 align-self-center">
+        <button type="button" class="btn btn-primary" (click)="addPointToList()">Add Point</button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="closeModal()">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="post()">{{ data.equipment ? 'Edit' : 'Create' }}</button>
+</mat-dialog-actions>
