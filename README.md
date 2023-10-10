@@ -1,10 +1,15 @@
 # Siemens Test Front
 
-# Install Dependencies
+## Install Dependencies
 ```bash
 $ npm install
 ```
-# Running the project
+## Running the project
 ```bash
 $ npm start
+```
+
+## Documentation
+```bash
+$ npm start:doc
 ```
